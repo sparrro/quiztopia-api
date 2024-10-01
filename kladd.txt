@@ -1,0 +1,19 @@
+2 tabeller: konton; quiz
+
+POST skapa konto
+POST logga in
+
+GET hämta alla quiz
+GET hämta ett quiz med alla frågor
+
+kräver inloggning:
+POST skapa ett quiz
+PUT lägg till frågor på ett quiz
+ en fråga innehåller: frågan, svaret, koordinater (longitud, latitud)
+DELETE ta bort ett quiz
+
+VG:
+leaderboard över poäng för ett quiz:
+ POST registrera poäng för en användare
+ GET hämta topplista över poäng och användare för ett quiz
+felhantering, validering

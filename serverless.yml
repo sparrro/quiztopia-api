@@ -1,0 +1,85 @@
+org: sparrro
+service: quiztopia-api
+
+provider:
+  name: aws
+  runtime: nodejs20.x
+  region: eu-north-1
+  iam:
+    role: arn:aws:iam::051826728622:role/Lolas_roll
+
+build:
+  esbuild:
+    minify: true
+
+package:
+  individually: true
+
+functions:
+  createAccount:
+    handler: functions/createAccount/index.handler
+    events:
+      - httpApi:
+          path: /account/signup
+          method: post
+  logIn:
+    handler: functions/logIn/index.handler
+    events:
+      - httpApi:
+          path: /account/login
+          method: post
+  getAllQuizzes:
+    handler: functions/getAllQuizzes/index.handler
+    events:
+      - httpApi:
+          path: /quizzes
+          method: get
+  getQuiz:
+    handler: functions/getQuiz/index.handler
+    events:
+      - httpApi:
+          path: /quizzes/{id}
+          method: get
+  createQuiz:
+    handler: functions/createQuiz/index.handler
+    events:
+      - httpApi:
+          path: /quizzes
+          method: post
+  addQuestions:
+    handler: functions/addQuestions/index.handler
+    events:
+      - httpApi:
+          path: /quizzes/{id}
+          method: put
+    deleteQuiz:
+      handler: functions/deleteQuiz/index.handler
+      events:
+        - httpApi:
+            path: /quizzes/{id}
+            method: delete
+
+resources:
+  Resources:
+    UsersTable:
+      Type: AWS::DynamoDB::Table
+      Properties:
+        TableName: users
+        AttributeDefinitions:
+          - AttributeName: "userId"
+            AttributeType: "S"
+        KeySchema:
+          - AttributeName: "userId"
+            KeyType: HASH
+        BillingMode: PAY_PER_REQUEST
+    QuizTable:
+      Type: AWS::DynamoDB::Table
+      Properties:
+        TableName: quizzes
+        AttributeDefinitions:
+          - AttributeName: "quizId"
+            AttributeType: "S"
+        KeySchema:
+          - AttributeName: "quizId"
+            KeyType: HASH
+        BillingMode: PAY_PER_REQUEST
