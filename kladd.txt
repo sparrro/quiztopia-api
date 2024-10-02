@@ -17,3 +17,15 @@ leaderboard över poäng för ett quiz:
  POST registrera poäng för en användare
  GET hämta topplista över poäng och användare för ett quiz
 felhantering, validering
+
+
+lägg upp yml - check
+ordna databas - check
+svarsfunktioner - check
+biolerplate för lambdafunktionerna - check
+skapa konto
+logga in
+ordna inloggningskoll
+skapa quiz
+ändra quiz
+radera quiz
