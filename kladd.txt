@@ -28,7 +28,7 @@ logga in - check och testat
 ordna inloggningskoll - check
 ordna frågevalidering - check
 skapa quiz - check och testat
-ordna att den kollar att man äger ett quiz - pågående
+ordna att den kollar att man äger ett quiz - check
 ändra quiz - pågående
 radera quiz
 hämta alla quiz

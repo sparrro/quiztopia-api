@@ -1,23 +1,37 @@
 const isValidCoordinates = require("is-valid-coordinates");
 const { sendError, sendResponse } = require("../responses");
 const { validateToken } = require("../utils/jwt");
+const { QueryCommand } = require("@aws-sdk/lib-dynamodb");
+const { db } = require("../database/index");
 
 exports.authenticate = {
     before: async (handler) => {
         
         //ta in tokenen
         const authorization = handler.event.headers["authorization"];
-        //return sendResponse(200, "1", authorization)
         const token = authorization && authorization.split(" ")[1];
-        //return sendResponse(200, "2", token)
         if (!token) return sendError(401, "No valid token provided");
 
         //validera
         const validated = validateToken(token);
 
         //kolla om man äger quizzet man försöker pilla på
-        const body = JSON.parse(handler.event.body);
-        if (body.quiz)
+        let id
+        if (handler.event.queryStringParameters) {
+            id = handler.event.queryStringParameters["id"]
+        };
+        if (typeof id === "string") {
+            const queryCommand = new QueryCommand({
+                TableName: "quizzes",
+                KeyConditionExpression: "quizId = :quizId",
+                ExpressionAttributeValues: {
+                    ":quizId": id,
+                },
+            });
+            const quizResult = await db.send(queryCommand);
+            if (quizResult.Items.length === 0) return sendError(404, "No quiz found");
+            if (validated.user !== quizResult.Items[0].owner) return sendError(403, "Can only edit or delete own quizzes");
+        }
 
         handler.event.user = validated.user;
     }

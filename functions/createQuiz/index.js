@@ -10,7 +10,7 @@ const createQuizHandler = async (event) => {
 
     const user = event.user;
     const { quizName, quizQuestions } = JSON.parse(event.body);
-
+    
     try {
 
         const id = uuidv4();
