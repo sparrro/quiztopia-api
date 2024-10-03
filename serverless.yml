@@ -66,20 +66,29 @@ resources:
       Properties:
         TableName: users
         AttributeDefinitions:
-          - AttributeName: "userId"
-            AttributeType: "S"
+          - AttributeName: username
+            AttributeType: S
+          - AttributeName: email
+            AttributeType: S
         KeySchema:
-          - AttributeName: "userId"
+          - AttributeName: username
             KeyType: HASH
+        GlobalSecondaryIndexes:
+          - IndexName: emailIndex
+            KeySchema: 
+              - AttributeName: email
+                KeyType: HASH
+            Projection:
+              ProjectionType: KEYS_ONLY
         BillingMode: PAY_PER_REQUEST
     QuizTable:
       Type: AWS::DynamoDB::Table
       Properties:
         TableName: quizzes
         AttributeDefinitions:
-          - AttributeName: "quizId"
-            AttributeType: "S"
+          - AttributeName: quizId
+            AttributeType: S
         KeySchema:
-          - AttributeName: "quizId"
+          - AttributeName: quizId
             KeyType: HASH
         BillingMode: PAY_PER_REQUEST

@@ -23,8 +23,8 @@ lägg upp yml - check
 ordna databas - check
 svarsfunktioner - check
 biolerplate för lambdafunktionerna - check
-skapa konto - check
-logga in
+skapa konto - check och testat
+logga in - pågående
 ordna inloggningskoll
 skapa quiz
 ändra quiz

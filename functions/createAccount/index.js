@@ -1,6 +1,5 @@
 const { db } = require("../../database/index");
-const { v4: uuidv4 } = require("uuid");
-const { ScanCommand, PutCommand } = require("@aws-sdk/lib-dynamodb");
+const { PutCommand, QueryCommand } = require("@aws-sdk/lib-dynamodb");
 const { sendResponse, sendError } = require("../../responses/index");
 const { validate } = require("email-validator");
 const { hashPassword } = require("../../utils/bcrypt/index");
@@ -9,12 +8,12 @@ exports.handler = async (event) => {
     
     //ta in data
     const { username, email, password } = JSON.parse(event.body);
-    if (!username || !email || !password) return sendError(406, "Must fill in all fields");
+    if (!username || !email || !password) return sendError(406, "Missing input data");
     if (!validate(email)) return sendError(406, "Invalid email format");
 
     try {
 
-        const scanCommand = new ScanCommand({
+        /* const scanCommand = new ScanCommand({
             TableName: "users",
             FilterExpression: "username = :username OR email = :email",
             ExpressionAttributeValues: {
@@ -23,9 +22,32 @@ exports.handler = async (event) => {
             },
         });
         const result = await db.send(scanCommand);
-        if (result.Items.length>0) return sendError(400, "Account with this username of email already exists");
+        if (result.Items.length>0) return sendError(400, "Account with this username of email already exists"); */
 
-        const id = uuidv4();
+        //kolla att användarnamnet inte är upptaget
+        const usernameQueryComm = new QueryCommand({
+            TableName: "users",
+            KeyConditionExpression: "username = :username",
+            ExpressionAttributeValues: {
+                ":username": username,
+            },
+        });
+        const usernameResult = await db.send(usernameQueryComm);
+        if (usernameResult.Items.length>0) return sendError(400, "Username already in use");
+
+        //ditto mejlen
+        const emailQueryComm = new QueryCommand({
+            TableName: "users",
+            IndexName: "emailIndex",
+            KeyConditionExpression: "email = :email",
+            ExpressionAttributeValues: {
+                ":email": email,
+            },
+        });
+        const emailResult = await db.send(emailQueryComm);
+        if (emailResult.Items.length>0) return sendError(400, "User already registered with this email");
+
+        //skapa användaren
         const hashedPassword = await hashPassword(password);
         const putCommand = new PutCommand({
             TableName: "users",
@@ -33,11 +55,9 @@ exports.handler = async (event) => {
                 username: username,
                 email: email,
                 password: hashedPassword,
-                userId: id,
-            },
-            //ReturnValues: "ALL_NEW" //har inte bestämt mig än
+            }
         });
-        const user = await db.send(putCommand);
+        db.send(putCommand);
 
         return sendResponse(201, "Registration succesful");
 

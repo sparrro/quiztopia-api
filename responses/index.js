@@ -1,10 +1,10 @@
-module.exports.sendResponse = (status, response) => {
+module.exports.sendResponse = (status, message, data) => {
     return {
         statusCode: status,
         headers: {
             "Content-Type": "application/json",
         },
-        body: JSON.stringify(response),
+        body: JSON.stringify({"message": message, "data": data}),
     }
 }
 
