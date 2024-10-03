@@ -1,4 +1,4 @@
-module.exports.sendResponse = (status, message, data) => {
+exports.sendResponse = (status, message, data) => {
     return {
         statusCode: status,
         headers: {
@@ -8,7 +8,7 @@ module.exports.sendResponse = (status, message, data) => {
     }
 }
 
-module.exports.sendError = (status, message) => {
+exports.sendError = (status, message) => {
     return {
         statusCode: status,
         headers: {

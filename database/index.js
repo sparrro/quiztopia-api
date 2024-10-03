@@ -5,4 +5,4 @@ const client = new DynamoDBClient({
     region: process.env.REGION,
 });
 
-module.exports.db = DynamoDBDocumentClient.from(client);
+exports.db = DynamoDBDocumentClient.from(client);

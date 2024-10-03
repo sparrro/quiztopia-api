@@ -1,9 +1,12 @@
 const jwt = require("jsonwebtoken");
+const { sendError } = require("../../responses");
 
-module.exports.giveToken = (user) => {
+exports.giveToken = (user) => {
     return jwt.sign(
         {user: user},
         process.env.JWT_SECRET,
         {expiresIn: "24h"},
     );
 }
+
+exports.validateToken = (token) => jwt.verify(token, process.env.JWT_SECRET);
