@@ -24,8 +24,8 @@ ordna databas - check
 svarsfunktioner - check
 biolerplate för lambdafunktionerna - check
 skapa konto - check och testat
-logga in - pågående
-ordna inloggningskoll
-skapa quiz
+logga in - check och testat
+ordna inloggningskoll - pågående
+skapa quiz - pågående
 ändra quiz
 radera quiz

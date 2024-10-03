@@ -13,17 +13,6 @@ exports.handler = async (event) => {
 
     try {
 
-        /* const scanCommand = new ScanCommand({
-            TableName: "users",
-            FilterExpression: "username = :username OR email = :email",
-            ExpressionAttributeValues: {
-                ":username": username,
-                ":email": email
-            },
-        });
-        const result = await db.send(scanCommand);
-        if (result.Items.length>0) return sendError(400, "Account with this username of email already exists"); */
-
         //kolla att användarnamnet inte är upptaget
         const usernameQueryComm = new QueryCommand({
             TableName: "users",
