@@ -25,6 +25,7 @@ exports.handler = async (event) => {
         });
         const queryResult = await db.send(usernameQueryComm);
         if (queryResult.Items.length===0) return sendError(404, "No user by that username");
+        const user = queryResult.Items[0];
 
         //kolla att lösenordet stämmer
         const passwordMatches = await checkPassword(password, user.password);
