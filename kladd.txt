@@ -25,7 +25,24 @@ svarsfunktioner - check
 biolerplate för lambdafunktionerna - check
 skapa konto - check och testat
 logga in - check och testat
-ordna inloggningskoll - pågående
-skapa quiz - pågående
-ändra quiz
+ordna inloggningskoll - check
+ordna frågevalidering - check
+skapa quiz - check och testat
+ordna att den kollar att man äger ett quiz - pågående
+ändra quiz - pågående
 radera quiz
+hämta alla quiz
+hämta specifikt quiz
+
+
+returvärdet för rad 12:
+{
+    "message": "well done son",
+    "data": "björn örn"
+}
+
+400 - bad request - odugligt inputdata
+401 - unaothorized - användaren har inte tillåtelse att göra detta
+403 - forbidden - samma som 401? hoppa över den
+404 - not found - resursen kunde inte hittas
+406 - not acceptable - skit i den

@@ -46,7 +46,7 @@ exports.handler = async (event) => {
                 password: hashedPassword,
             }
         });
-        db.send(putCommand);
+        await db.send(putCommand);
 
         return sendResponse(201, "Registration succesful");
 

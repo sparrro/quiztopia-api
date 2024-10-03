@@ -3,8 +3,10 @@
     "@aws-sdk/client-dynamodb": "^3.658.1",
     "@aws-sdk/lib-dynamodb": "^3.658.1",
     "@middy/core": "^4.7.0",
+    "@middy/http-json-body-parser": "^5.5.0",
     "bcryptjs": "^2.4.3",
     "email-validator": "^2.0.4",
+    "is-valid-coordinates": "^1.0.0",
     "jsonwebtoken": "^9.0.2",
     "uuid": "^10.0.0"
   }
