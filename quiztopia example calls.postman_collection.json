@@ -1,0 +1,293 @@
+{
+	"info": {
+		"_postman_id": "d261b8fa-f272-481f-9f4a-8fd4060894b0",
+		"name": "quiztopia example calls",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "34060746"
+	},
+	"item": [
+		{
+			"name": "Sign up",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"username\":\"Arne\",\r\n    \"email\":\"arne.beise@gmail.com\",\r\n    \"password\":\"banan\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "https://erz5u80ia8.execute-api.eu-north-1.amazonaws.com/account/signup",
+					"protocol": "https",
+					"host": [
+						"erz5u80ia8",
+						"execute-api",
+						"eu-north-1",
+						"amazonaws",
+						"com"
+					],
+					"path": [
+						"account",
+						"signup"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Log in",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"username\":\"Arne\",\r\n    \"password\":\"banan\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "https://erz5u80ia8.execute-api.eu-north-1.amazonaws.com/account/login",
+					"protocol": "https",
+					"host": [
+						"erz5u80ia8",
+						"execute-api",
+						"eu-north-1",
+						"amazonaws",
+						"com"
+					],
+					"path": [
+						"account",
+						"login"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Create quiz",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "authorization",
+						"value": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyIjoiQXJuZSIsImlhdCI6MTcyODA3NDg5MywiZXhwIjoxNzI4MTYxMjkzfQ.VJxwHGWegPbpBA6PiN7EhQncxlqRdACrJPGR_mrgt_Q",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"quizName\":\"The Animal Dicks Quiz\",\r\n    \"quizQuestions\":[\r\n        {\r\n            \"question\":\"How many dicks does a shark have?\",\r\n            \"answer\":\"One on average - the males have two and the females zero\",\r\n            \"coordinates\":{\r\n                \"longitude\":42.12343,\r\n                \"latitude\":34.234\r\n            }\r\n        },\r\n        {\r\n            \"question\":\"Which primate has the biggest dick relative to body size?\",\r\n            \"answer\":\"Human - me, specifically\",\r\n            \"coordinates\":{\r\n                \"longitude\":42.12343,\r\n                \"latitude\":34.234\r\n            }\r\n        }\r\n    ]\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "https://erz5u80ia8.execute-api.eu-north-1.amazonaws.com/quizzes",
+					"protocol": "https",
+					"host": [
+						"erz5u80ia8",
+						"execute-api",
+						"eu-north-1",
+						"amazonaws",
+						"com"
+					],
+					"path": [
+						"quizzes"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Get all quizzes",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "authorization",
+						"value": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyIjoiQXJuZSIsImlhdCI6MTcyODA3NDg5MywiZXhwIjoxNzI4MTYxMjkzfQ.VJxwHGWegPbpBA6PiN7EhQncxlqRdACrJPGR_mrgt_Q",
+						"type": "text",
+						"disabled": true
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "https://erz5u80ia8.execute-api.eu-north-1.amazonaws.com/quizzes",
+					"protocol": "https",
+					"host": [
+						"erz5u80ia8",
+						"execute-api",
+						"eu-north-1",
+						"amazonaws",
+						"com"
+					],
+					"path": [
+						"quizzes"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Get quiz with questions",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "authorization",
+						"value": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyIjoiQXJuZSIsImlhdCI6MTcyODA3NDg5MywiZXhwIjoxNzI4MTYxMjkzfQ.VJxwHGWegPbpBA6PiN7EhQncxlqRdACrJPGR_mrgt_Q",
+						"type": "text",
+						"disabled": true
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "https://erz5u80ia8.execute-api.eu-north-1.amazonaws.com/quizzes/?id=811f0072-d8ad-4bc3-9b35-2d429165a803",
+					"protocol": "https",
+					"host": [
+						"erz5u80ia8",
+						"execute-api",
+						"eu-north-1",
+						"amazonaws",
+						"com"
+					],
+					"path": [
+						"quizzes",
+						""
+					],
+					"query": [
+						{
+							"key": "id",
+							"value": "811f0072-d8ad-4bc3-9b35-2d429165a803",
+							"description": "quizId of the quiz to be retrieved"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Add questions to a quiz",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "authorization",
+						"value": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyIjoiQXJuZSIsImlhdCI6MTcyODA3NDg5MywiZXhwIjoxNzI4MTYxMjkzfQ.VJxwHGWegPbpBA6PiN7EhQncxlqRdACrJPGR_mrgt_Q",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"quizQuestions\":[\r\n        {\r\n            \"question\":\"Where do the balls go on a marsupial?\",\r\n            \"answer\":\"Above the dick\",\r\n            \"coordinates\":{\r\n                \"longitude\":12.1231,\r\n                \"latitude\":74.18749\r\n            }\r\n        }\r\n    ]\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "https://erz5u80ia8.execute-api.eu-north-1.amazonaws.com/quizzes/edit/?id=811f0072-d8ad-4bc3-9b35-2d429165a803",
+					"protocol": "https",
+					"host": [
+						"erz5u80ia8",
+						"execute-api",
+						"eu-north-1",
+						"amazonaws",
+						"com"
+					],
+					"path": [
+						"quizzes",
+						"edit",
+						""
+					],
+					"query": [
+						{
+							"key": "id",
+							"value": "811f0072-d8ad-4bc3-9b35-2d429165a803",
+							"description": "quizId of the quiz to be edited"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Delete quiz",
+			"request": {
+				"method": "DELETE",
+				"header": [
+					{
+						"key": "authorization",
+						"value": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyIjoiQXJuZSIsImlhdCI6MTcyODA3NDg5MywiZXhwIjoxNzI4MTYxMjkzfQ.VJxwHGWegPbpBA6PiN7EhQncxlqRdACrJPGR_mrgt_Q",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "https://erz5u80ia8.execute-api.eu-north-1.amazonaws.com/quizzes/delete/?id=811f0072-d8ad-4bc3-9b35-2d429165a803",
+					"protocol": "https",
+					"host": [
+						"erz5u80ia8",
+						"execute-api",
+						"eu-north-1",
+						"amazonaws",
+						"com"
+					],
+					"path": [
+						"quizzes",
+						"delete",
+						""
+					],
+					"query": [
+						{
+							"key": "id",
+							"value": "811f0072-d8ad-4bc3-9b35-2d429165a803",
+							"description": "quizId of the quiz to be deleted"
+						}
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}

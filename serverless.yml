@@ -1,4 +1,4 @@
-org: sparrro
+org: 
 service: quiztopia-api
 
 provider:
@@ -9,7 +9,7 @@ provider:
     JWT_SECRET: "The Man in Black fled across the desert, and the Gunslinger followed"
   region: eu-north-1
   iam:
-    role: arn:aws:iam::051826728622:role/Lolas_roll
+    role: 
 
 build:
   esbuild:
