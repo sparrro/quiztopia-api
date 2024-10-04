@@ -30,8 +30,8 @@ ordna frågevalidering - check
 skapa quiz - check och testat
 ordna att den kollar att man äger ett quiz - check
 ändra quiz - check oc htestat
-radera quiz
-hämta alla quiz
+radera quiz - cehck och etstea
+hämta alla quiz - pågående
 hämta specifikt quiz
 
 
