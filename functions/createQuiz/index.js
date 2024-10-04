@@ -17,8 +17,8 @@ const createQuizHandler = async (event) => {
         const putCommand = new PutCommand({
             TableName: "quizzes",
             Item: {
-                owner: user,
-                name: quizName,
+                quizOwner: user,
+                quizName: quizName,
                 questions: quizQuestions,
                 quizId: id,
             },

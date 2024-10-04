@@ -30,7 +30,7 @@ exports.authenticate = {
             });
             const quizResult = await db.send(queryCommand);
             if (quizResult.Items.length === 0) return sendError(404, "No quiz found");
-            if (validated.user !== quizResult.Items[0].owner) return sendError(403, "Can only edit or delete own quizzes");
+            if (validated.user !== quizResult.Items[0].quizOwner) return sendError(403, "Can only edit or delete own quizzes");
         }
 
         handler.event.user = validated.user;
