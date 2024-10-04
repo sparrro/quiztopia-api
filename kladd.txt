@@ -29,17 +29,13 @@ ordna inloggningskoll - check
 ordna frågevalidering - check
 skapa quiz - check och testat
 ordna att den kollar att man äger ett quiz - check
-ändra quiz - pågående
+ändra quiz - check oc htestat
 radera quiz
 hämta alla quiz
 hämta specifikt quiz
 
 
-returvärdet för rad 12:
-{
-    "message": "well done son",
-    "data": "björn örn"
-}
+
 
 400 - bad request - odugligt inputdata
 401 - unaothorized - användaren har inte tillåtelse att göra detta

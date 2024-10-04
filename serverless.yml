@@ -53,13 +53,13 @@ functions:
     handler: functions/addQuestions/index.handler
     events:
       - httpApi:
-          path: /quizzes/{id}
-          method: put
+          path: /quizzes/edit/{id}
+          method: post
   deleteQuiz:
     handler: functions/deleteQuiz/index.handler
     events:
       - httpApi:
-          path: /quizzes/{id}
+          path: /quizzes/delete/{id}
           method: delete
 
 resources:
